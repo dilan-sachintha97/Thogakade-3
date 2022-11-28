@@ -3,7 +3,7 @@ package com.abcjava.pos.controller;
 import com.abcjava.pos.dao.DatabaseAccessCode;
 import com.abcjava.pos.db.DBConnection;
 import com.abcjava.pos.db.Database;
-import com.abcjava.pos.modal.Customer;
+import com.abcjava.pos.entity.Customer;
 import com.abcjava.pos.view.tm.CustomerTm;
 import com.jfoenix.controls.JFXButton;
 import com.mysql.cj.jdbc.Driver;
@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Optional;
 
 public class CustomerManagementFormController {
@@ -72,25 +73,17 @@ public class CustomerManagementFormController {
 
     private void searchCustomers(String text) {
         String searchText = "%"+text+"%";
-
         // set value to table
         ObservableList<CustomerTm> tmList = FXCollections.observableArrayList();
         try {
-            String sql = "SELECT * FROM Customer WHERE name LIKE ? || address LIKE ?";
-            PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
-            statement.setString(1,searchText);
-            statement.setString(2,searchText);
-            ResultSet set = statement.executeQuery();
-
-
-
-            while (set.next()){
+            ArrayList<Customer> list = new DatabaseAccessCode().searchCustomer(searchText);
+            for (Customer c : list){
                 Button button = new Button("Delete");
                 CustomerTm customerTm = new CustomerTm(
-                        set.getString(1),
-                        set.getString(2),
-                        set.getString(3),
-                        set.getDouble(4),
+                        c.getId(),
+                        c.getName(),
+                        c.getAddress(),
+                        c.getSalary(),
                         button
                 );
                 tmList.add(customerTm);
@@ -102,20 +95,16 @@ public class CustomerManagementFormController {
                     if (buttonType.get() == ButtonType.YES) {
 
                         try{
-
                             boolean isDeleteCustomer = new DatabaseAccessCode().deleteCustomer(customerTm.getId());
-
                             if(isDeleteCustomer){
                                 searchCustomers(searchText);
                                 new Alert(Alert.AlertType.INFORMATION, "Customer Deleted").show();
                             }else {
                                 new Alert(Alert.AlertType.WARNING, "Something Wrong!").show();
                             }
-
                         }catch (ClassNotFoundException | SQLException e){
                             e.printStackTrace();
                         }
-
                     }
 
                 });
