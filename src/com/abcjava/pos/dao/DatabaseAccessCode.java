@@ -18,6 +18,16 @@ public class DatabaseAccessCode {
         statement.setString(3,customer.getAddress());
         statement.setDouble(4,customer.getSalary());
         return statement.executeUpdate() > 0;
+    }
 
+    // update customer
+    public boolean updateCustomer(Customer customer) throws SQLException, ClassNotFoundException {
+        String sql = "UPDATE Customer SET name =?, address=?, salary=? WHERE id=?";
+        PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
+        statement.setString(1,customer.getName());
+        statement.setString(2,customer.getAddress());
+        statement.setDouble(3, customer.getSalary());
+        statement.setString(4,customer.getId());
+        return statement.executeUpdate() > 0;
     }
 }

@@ -162,16 +162,15 @@ public class CustomerManagementFormController {
 
         } else {
             //update customer
-
             try{
-                String sql = "UPDATE Customer SET name =?, address=?, salary=? WHERE id=?";
-                PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
-                statement.setString(1,txtName.getText());
-                statement.setString(2,txtAddress.getText());
-                statement.setDouble(3, Double.parseDouble(txtSalary.getText()));
-                statement.setString(4,txtId.getText());
-                int isUpdated = statement.executeUpdate();
-                if(isUpdated > 0){
+                boolean isUpdatedCustomer = new DatabaseAccessCode().updateCustomer(new com.abcjava.pos.entity.Customer(
+                        txtId.getText(),
+                        txtName.getText(),
+                        txtAddress.getText(),
+                        Double.parseDouble(txtSalary.getText())
+                ));
+
+                if(isUpdatedCustomer){
                     searchCustomers(searchText);
                     new Alert(Alert.AlertType.INFORMATION, "Customer Updated").show();
                     clearField();
