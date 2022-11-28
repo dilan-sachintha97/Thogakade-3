@@ -102,11 +102,10 @@ public class CustomerManagementFormController {
                     if (buttonType.get() == ButtonType.YES) {
 
                         try{
-                            String sql1 = "DELETE FROM Customer WHERE id=?";
-                            PreparedStatement statement1 = DBConnection.getInstance().getConnection().prepareStatement(sql1);
-                            statement1.setString(1,customerTm.getId());
 
-                            if(statement1.executeUpdate() > 0){
+                            boolean isDeleteCustomer = new DatabaseAccessCode().deleteCustomer(customerTm.getId());
+
+                            if(isDeleteCustomer){
                                 searchCustomers(searchText);
                                 new Alert(Alert.AlertType.INFORMATION, "Customer Deleted").show();
                             }else {
