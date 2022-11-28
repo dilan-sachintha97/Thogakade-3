@@ -1,5 +1,6 @@
 package com.abcjava.pos.controller;
 
+import com.abcjava.pos.dao.DatabaseAccessCode;
 import com.abcjava.pos.db.DBConnection;
 import com.abcjava.pos.db.Database;
 import com.abcjava.pos.modal.Customer;
@@ -134,27 +135,18 @@ public class CustomerManagementFormController {
     }
 
     public void btnSaveCustomerOnAction(ActionEvent actionEvent) {
-
-        Customer customer = new Customer(
-                txtId.getText(), txtName.getText(), txtAddress.getText(), Double.parseDouble(txtSalary.getText())
-        );
-
         if (btnSaveCustomer.getText().equalsIgnoreCase("Save Customer")) {
-
             //Save customer in database - mySQl
 
             try {
-                String sql = "INSERT INTO Customer VALUES (?,?,?,?)";
-                PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
-                statement.setString(1,customer.getId());
-                statement.setString(2,customer.getName());
-                statement.setString(3,customer.getAddress());
-                statement.setDouble(4,customer.getSalary());
+                boolean isSavedCustomer = new DatabaseAccessCode().saveCustomer(new com.abcjava.pos.entity.Customer(
+                        txtId.getText(),
+                        txtName.getText(),
+                        txtAddress.getText(),
+                        Double.parseDouble(txtSalary.getText())
+                ));
 
-                //step 05 -> execute statement
-                int isSaved = statement.executeUpdate();
-
-                if (isSaved > 0) {
+                if (isSavedCustomer) {
                     searchCustomers(searchText);
                     clearField();
                     new Alert(Alert.AlertType.INFORMATION, "Customer Saved").show();
