@@ -1,5 +1,6 @@
 package com.abcjava.pos.dao.custom.impl;
 
+import com.abcjava.pos.dao.CrudUtil;
 import com.abcjava.pos.dao.custom.CustomerDao;
 import com.abcjava.pos.db.DBConnection;
 import com.abcjava.pos.entity.Customer;
@@ -13,40 +14,25 @@ public class CustomerDaoImpl implements CustomerDao {
     @Override
     public boolean save(Customer customer) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO Customer VALUES (?,?,?,?)";
-        PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
-        statement.setString(1,customer.getId());
-        statement.setString(2,customer.getName());
-        statement.setString(3,customer.getAddress());
-        statement.setDouble(4,customer.getSalary());
-        return statement.executeUpdate() > 0;
+        return CrudUtil.execute(sql,customer.getId(),customer.getName(),customer.getAddress(),customer.getSalary());
     }
 
     @Override
     public boolean update(Customer customer) throws SQLException, ClassNotFoundException {
         String sql = "UPDATE Customer SET name =?, address=?, salary=? WHERE id=?";
-        PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
-        statement.setString(1,customer.getName());
-        statement.setString(2,customer.getAddress());
-        statement.setDouble(3, customer.getSalary());
-        statement.setString(4,customer.getId());
-        return statement.executeUpdate() > 0;
+        return CrudUtil.execute(sql, customer.getName(),customer.getAddress(),customer.getSalary(),customer.getId());
     }
 
     @Override
     public boolean delete(String id) throws SQLException, ClassNotFoundException {
         String sql1 = "DELETE FROM Customer WHERE id=?";
-        PreparedStatement statement1 = DBConnection.getInstance().getConnection().prepareStatement(sql1);
-        statement1.setString(1,id);
-        return statement1.executeUpdate() > 0;
+        return CrudUtil.execute(sql1,id);
     }
 
     @Override
     public ArrayList<Customer> searchCustomer(String searchText) throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM Customer WHERE name LIKE ? || address LIKE ?";
-        PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
-        statement.setString(1,searchText);
-        statement.setString(2,searchText);
-        ResultSet set = statement.executeQuery();
+        ResultSet set = CrudUtil.execute(sql,searchText,searchText);
 
         ArrayList<Customer> customerList = new ArrayList<>();
 
