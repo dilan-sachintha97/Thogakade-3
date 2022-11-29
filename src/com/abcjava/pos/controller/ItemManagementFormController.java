@@ -1,5 +1,8 @@
 package com.abcjava.pos.controller;
 
+import com.abcjava.pos.dao.DaoFactory;
+import com.abcjava.pos.dao.DaoTypes;
+import com.abcjava.pos.dao.custom.ItemDao;
 import com.abcjava.pos.dao.custom.impl.ItemDaoImpl;
 import com.abcjava.pos.entity.Item;
 import com.abcjava.pos.view.tm.ItemTm;
@@ -34,6 +37,8 @@ public class ItemManagementFormController {
     public AnchorPane itemManagementContext;
     public TableColumn<ItemTm,Integer>  colQtyOnHand;
     private String text = "";
+
+    private ItemDao itemDao = DaoFactory.getInstance().getDao(DaoTypes.ITEMS);
 
     public void initialize(){
         colCode.setCellValueFactory(new PropertyValueFactory<>("code"));
@@ -86,7 +91,7 @@ public class ItemManagementFormController {
             clearField();
         }else{
             try {
-               boolean isUpdatedItem = new ItemDaoImpl().update(
+               boolean isUpdatedItem = itemDao.update(
                        new Item( txtCode.getText(),
                                txtDescription.getText(),
                                Double.parseDouble(txtUnitPrice.getText()),
@@ -120,7 +125,7 @@ public class ItemManagementFormController {
         //search
         String searchText = "%"+text+"%";
         try{
-            ArrayList<Item> itemArrayList = new ItemDaoImpl().searchItem(searchText);
+            ArrayList<Item> itemArrayList = itemDao.searchItem(searchText);
 
            for(Item item : itemArrayList){
                 Button button = new Button("Delete");
@@ -139,7 +144,7 @@ public class ItemManagementFormController {
                     Optional<ButtonType> buttonType = alert.showAndWait();
                     if (buttonType.get() == ButtonType.YES) {
                         try{
-                            boolean isDeletedItem = new ItemDaoImpl().delete(itemTm.getCode());
+                            boolean isDeletedItem = itemDao.delete(itemTm.getCode());
                             if(isDeletedItem ){
                                  setDataToTable(text);
                                 new Alert(Alert.AlertType.INFORMATION, "Item Deleted").show();
@@ -162,7 +167,7 @@ public class ItemManagementFormController {
 
     private void setDataToDatabase() {
         try {
-            boolean isSavedItem = new ItemDaoImpl().save(
+            boolean isSavedItem = itemDao.save(
                     new com.abcjava.pos.entity.Item(
                             txtCode.getText(),
                             txtDescription.getText(),

@@ -1,6 +1,8 @@
 package com.abcjava.pos.controller;
 
-import com.abcjava.pos.dao.custom.impl.CustomerDaoImpl;
+import com.abcjava.pos.dao.DaoFactory;
+import com.abcjava.pos.dao.DaoTypes;
+import com.abcjava.pos.dao.custom.CustomerDao;
 import com.abcjava.pos.entity.Customer;
 import com.abcjava.pos.view.tm.CustomerTm;
 import com.jfoenix.controls.JFXButton;
@@ -35,6 +37,8 @@ public class CustomerManagementFormController {
     public TextField txtSearchCustomer;
 
     private String searchText="";
+
+    private CustomerDao customerDao = DaoFactory.getInstance().getDao(DaoTypes.CUSTOMER);
 
     public void initialize() {
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -73,7 +77,7 @@ public class CustomerManagementFormController {
         // set value to table
         ObservableList<CustomerTm> tmList = FXCollections.observableArrayList();
         try {
-            ArrayList<Customer> list = new CustomerDaoImpl().searchCustomer(searchText);
+            ArrayList<Customer> list = customerDao.searchCustomer(searchText);
             for (Customer c : list){
                 Button button = new Button("Delete");
                 CustomerTm customerTm = new CustomerTm(
@@ -92,7 +96,7 @@ public class CustomerManagementFormController {
                     if (buttonType.get() == ButtonType.YES) {
 
                         try{
-                            boolean isDeleteCustomer = new CustomerDaoImpl().delete(customerTm.getId());
+                            boolean isDeleteCustomer = customerDao.delete(customerTm.getId());
                             if(isDeleteCustomer){
                                 searchCustomers(searchText);
                                 new Alert(Alert.AlertType.INFORMATION, "Customer Deleted").show();
@@ -124,7 +128,7 @@ public class CustomerManagementFormController {
             //Save customer in database - mySQl
 
             try {
-                boolean isSavedCustomer = new CustomerDaoImpl().save(new com.abcjava.pos.entity.Customer(
+                boolean isSavedCustomer = customerDao.save(new com.abcjava.pos.entity.Customer(
                         txtId.getText(),
                         txtName.getText(),
                         txtAddress.getText(),
@@ -148,7 +152,7 @@ public class CustomerManagementFormController {
         } else {
             //update customer
             try{
-                boolean isUpdatedCustomer = new CustomerDaoImpl().update(new com.abcjava.pos.entity.Customer(
+                boolean isUpdatedCustomer = customerDao.update(new com.abcjava.pos.entity.Customer(
                         txtId.getText(),
                         txtName.getText(),
                         txtAddress.getText(),

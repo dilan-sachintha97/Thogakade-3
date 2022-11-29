@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="250f04df-20ff-418f-842d-e907ae63962e" name="Changes" comment="tested">
-      <change afterPath="$PROJECT_DIR$/src/com/abcjava/pos/dao/DaoFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/abcjava/pos/dao/DaoTypes.java" afterDir="false" />
+    <list default="true" id="250f04df-20ff-418f-842d-e907ae63962e" name="Changes" comment="applied factory design patterns">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/abcjava/pos/controller/CustomerManagementFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/abcjava/pos/controller/CustomerManagementFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/abcjava/pos/controller/ItemManagementFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/abcjava/pos/controller/ItemManagementFormController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,14 +171,7 @@
       <workItem from="1669712491264" duration="37000" />
       <workItem from="1669712548250" duration="1491000" />
       <workItem from="1669714254234" duration="2700000" />
-      <workItem from="1669720532395" duration="290000" />
-    </task>
-    <task id="LOCAL-00029" summary="set qty function">
-      <created>1668401972498</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1668401972498</updated>
+      <workItem from="1669720532395" duration="990000" />
     </task>
     <task id="LOCAL-00030" summary="set oder id">
       <created>1668405411779</created>
@@ -516,7 +509,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669715055965</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="applied factory design patterns">
+      <created>1669720900645</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1669720900647</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -534,7 +534,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="done item saved" />
     <MESSAGE value="done item update" />
     <MESSAGE value="done item search" />
     <MESSAGE value="done item delete" />
@@ -559,6 +558,7 @@
     <MESSAGE value="4" />
     <MESSAGE value="5" />
     <MESSAGE value="tested" />
-    <option name="LAST_COMMIT_MESSAGE" value="tested" />
+    <MESSAGE value="applied factory design patterns" />
+    <option name="LAST_COMMIT_MESSAGE" value="applied factory design patterns" />
   </component>
 </project>
