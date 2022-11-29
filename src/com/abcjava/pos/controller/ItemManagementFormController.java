@@ -3,7 +3,7 @@ package com.abcjava.pos.controller;
 import com.abcjava.pos.dao.DatabaseAccessCode;
 import com.abcjava.pos.db.DBConnection;
 import com.abcjava.pos.db.Database;
-import com.abcjava.pos.modal.Item;
+import com.abcjava.pos.entity.Item;
 import com.abcjava.pos.view.tm.ItemTm;
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
@@ -87,16 +87,13 @@ public class ItemManagementFormController {
             clearField();
         }else{
             try {
-                String sql = "UPDATE Item SET description =?, unitPrice=?, qtyOnHand=? WHERE code=?";
-                PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
-
-                statement.setString(1, txtDescription.getText());
-                statement.setDouble(2, Double.parseDouble(txtUnitPrice.getText()));
-                statement.setInt(3, Integer.parseInt(txtQtyOnHand.getText()));
-                statement.setString(4, txtCode.getText());
-                int isUpdated = statement.executeUpdate();
-
-                if (isUpdated > 0) {
+               boolean isUpdatedItem = new DatabaseAccessCode().updateItem(
+                       new Item( txtCode.getText(),
+                               txtDescription.getText(),
+                               Double.parseDouble(txtUnitPrice.getText()),
+                               Integer.parseInt(txtQtyOnHand.getText()))
+               );
+                if (isUpdatedItem) {
                     clearField();
                     new Alert(Alert.AlertType.INFORMATION, "Item Updated").show();
                 } else {

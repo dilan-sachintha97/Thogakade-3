@@ -74,4 +74,15 @@ public class DatabaseAccessCode {
         statement.setInt(4, item.getQtyOnHand());
         return statement.executeUpdate() > 0;
     }
+
+    //update item
+    public boolean updateItem(Item item) throws SQLException, ClassNotFoundException {
+        String sql = "UPDATE Item SET description =?, unitPrice=?, qtyOnHand=? WHERE code=?";
+        PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
+        statement.setString(1, item.getDescription());
+        statement.setDouble(2, item.getUnitPrice());
+        statement.setInt(3, item.getQtyOnHand());
+        statement.setString(4, item.getCode());
+        return statement.executeUpdate() > 0;
+    }
 }
