@@ -85,4 +85,12 @@ public class DatabaseAccessCode {
         statement.setString(4, item.getCode());
         return statement.executeUpdate() > 0;
     }
+
+    // delete item
+    public  boolean deleteItem(String code) throws SQLException, ClassNotFoundException {
+        String sql1 = "DELETE FROM Item WHERE code=?";
+        PreparedStatement statement1 = DBConnection.getInstance().getConnection().prepareStatement(sql1);
+        statement1.setString(1,code);
+        return statement1.executeUpdate() > 0;
+    }
 }

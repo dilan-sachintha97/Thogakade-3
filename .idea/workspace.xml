@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="250f04df-20ff-418f-842d-e907ae63962e" name="Changes" comment="done save item">
+    <list default="true" id="250f04df-20ff-418f-842d-e907ae63962e" name="Changes" comment="done update item">
       <change beforePath="$PROJECT_DIR$/out/production/Thogakade/com/abcjava/pos/controller/ItemManagementFormController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Thogakade/com/abcjava/pos/controller/ItemManagementFormController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/abcjava/pos/controller/ItemManagementFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/abcjava/pos/controller/ItemManagementFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/abcjava/pos/dao/DatabaseAccessCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/abcjava/pos/dao/DatabaseAccessCode.java" afterDir="false" />
@@ -162,14 +162,7 @@
       <workItem from="1669637687458" duration="5336000" />
       <workItem from="1669648439580" duration="68000" />
       <workItem from="1669648709474" duration="5169000" />
-      <workItem from="1669690741962" duration="1089000" />
-    </task>
-    <task id="LOCAL-00020" summary="1">
-      <created>1668055425517</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1668055425517</updated>
+      <workItem from="1669690741962" duration="2048000" />
     </task>
     <task id="LOCAL-00021" summary="2">
       <created>1668057967041</created>
@@ -507,7 +500,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669691353472</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="done update item">
+      <created>1669691864960</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1669691864960</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -525,7 +525,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="completed project" />
     <MESSAGE value="mysql connector added" />
     <MESSAGE value="done sql connection" />
     <MESSAGE value="3" />
@@ -550,6 +549,7 @@
     <MESSAGE value="done delete customer" />
     <MESSAGE value="done search customer" />
     <MESSAGE value="done save item" />
-    <option name="LAST_COMMIT_MESSAGE" value="done save item" />
+    <MESSAGE value="done update item" />
+    <option name="LAST_COMMIT_MESSAGE" value="done update item" />
   </component>
 </project>

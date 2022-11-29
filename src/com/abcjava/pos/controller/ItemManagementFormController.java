@@ -142,25 +142,18 @@ public class ItemManagementFormController {
                             ButtonType.YES, ButtonType.NO);
                     Optional<ButtonType> buttonType = alert.showAndWait();
                     if (buttonType.get() == ButtonType.YES) {
-
                         try{
-                            String sql1 = "DELETE FROM Item WHERE code=?";
-                            PreparedStatement statement1 = DBConnection.getInstance().getConnection().prepareStatement(sql1);
-                            statement1.setString(1,itemTm.getCode());
-
-                            if(statement1.executeUpdate() > 0){
+                            boolean isDeletedItem = new DatabaseAccessCode().deleteItem(itemTm.getCode());
+                            if(isDeletedItem ){
                                  setDataToTable(text);
                                 new Alert(Alert.AlertType.INFORMATION, "Item Deleted").show();
                             }else {
                                 new Alert(Alert.AlertType.WARNING, "Something Wrong!").show();
                             }
-
                         }catch (ClassNotFoundException | SQLException e){
                             e.printStackTrace();
                         }
-
                     }
-
                 });
             }
 
