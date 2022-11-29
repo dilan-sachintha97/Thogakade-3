@@ -1,5 +1,6 @@
 package com.abcjava.pos.controller;
 
+import com.abcjava.pos.dao.custom.impl.CustomerDaoImpl;
 import com.abcjava.pos.entity.Customer;
 import com.abcjava.pos.view.tm.CustomerTm;
 import com.jfoenix.controls.JFXButton;
@@ -72,7 +73,7 @@ public class CustomerManagementFormController {
         // set value to table
         ObservableList<CustomerTm> tmList = FXCollections.observableArrayList();
         try {
-            ArrayList<Customer> list = new DatabaseAccessCode().searchCustomer(searchText);
+            ArrayList<Customer> list = new CustomerDaoImpl().searchCustomer(searchText);
             for (Customer c : list){
                 Button button = new Button("Delete");
                 CustomerTm customerTm = new CustomerTm(
@@ -91,7 +92,7 @@ public class CustomerManagementFormController {
                     if (buttonType.get() == ButtonType.YES) {
 
                         try{
-                            boolean isDeleteCustomer = new DatabaseAccessCode().deleteCustomer(customerTm.getId());
+                            boolean isDeleteCustomer = new CustomerDaoImpl().delete(customerTm.getId());
                             if(isDeleteCustomer){
                                 searchCustomers(searchText);
                                 new Alert(Alert.AlertType.INFORMATION, "Customer Deleted").show();
@@ -123,7 +124,7 @@ public class CustomerManagementFormController {
             //Save customer in database - mySQl
 
             try {
-                boolean isSavedCustomer = new DatabaseAccessCode().saveCustomer(new com.abcjava.pos.entity.Customer(
+                boolean isSavedCustomer = new CustomerDaoImpl().save(new com.abcjava.pos.entity.Customer(
                         txtId.getText(),
                         txtName.getText(),
                         txtAddress.getText(),
@@ -147,7 +148,7 @@ public class CustomerManagementFormController {
         } else {
             //update customer
             try{
-                boolean isUpdatedCustomer = new DatabaseAccessCode().updateCustomer(new com.abcjava.pos.entity.Customer(
+                boolean isUpdatedCustomer = new CustomerDaoImpl().update(new com.abcjava.pos.entity.Customer(
                         txtId.getText(),
                         txtName.getText(),
                         txtAddress.getText(),

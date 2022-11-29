@@ -1,5 +1,6 @@
 package com.abcjava.pos.controller;
 
+import com.abcjava.pos.dao.custom.impl.ItemDaoImpl;
 import com.abcjava.pos.entity.Item;
 import com.abcjava.pos.view.tm.ItemTm;
 import com.jfoenix.controls.JFXButton;
@@ -85,7 +86,7 @@ public class ItemManagementFormController {
             clearField();
         }else{
             try {
-               boolean isUpdatedItem = new DatabaseAccessCode().updateItem(
+               boolean isUpdatedItem = new ItemDaoImpl().update(
                        new Item( txtCode.getText(),
                                txtDescription.getText(),
                                Double.parseDouble(txtUnitPrice.getText()),
@@ -119,7 +120,7 @@ public class ItemManagementFormController {
         //search
         String searchText = "%"+text+"%";
         try{
-            ArrayList<Item> itemArrayList = new DatabaseAccessCode().searchItem(searchText);
+            ArrayList<Item> itemArrayList = new ItemDaoImpl().searchItem(searchText);
 
            for(Item item : itemArrayList){
                 Button button = new Button("Delete");
@@ -138,7 +139,7 @@ public class ItemManagementFormController {
                     Optional<ButtonType> buttonType = alert.showAndWait();
                     if (buttonType.get() == ButtonType.YES) {
                         try{
-                            boolean isDeletedItem = new DatabaseAccessCode().deleteItem(itemTm.getCode());
+                            boolean isDeletedItem = new ItemDaoImpl().delete(itemTm.getCode());
                             if(isDeletedItem ){
                                  setDataToTable(text);
                                 new Alert(Alert.AlertType.INFORMATION, "Item Deleted").show();
@@ -161,7 +162,7 @@ public class ItemManagementFormController {
 
     private void setDataToDatabase() {
         try {
-            boolean isSavedItem = new DatabaseAccessCode().saveItem(
+            boolean isSavedItem = new ItemDaoImpl().save(
                     new com.abcjava.pos.entity.Item(
                             txtCode.getText(),
                             txtDescription.getText(),
