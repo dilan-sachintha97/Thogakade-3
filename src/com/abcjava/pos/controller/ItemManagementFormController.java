@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Optional;
 
 public class ItemManagementFormController {
@@ -121,18 +122,15 @@ public class ItemManagementFormController {
         //search
         String searchText = "%"+text+"%";
         try{
-            String sql = "SELECT * FROM Item WHERE description LIKE ?";
-            PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
-            statement.setString(1,searchText);
-            ResultSet set = statement.executeQuery();
+            ArrayList<Item> itemArrayList = new DatabaseAccessCode().searchItem(searchText);
 
-            while (set.next()){
+           for(Item item : itemArrayList){
                 Button button = new Button("Delete");
                 ItemTm itemTm = new ItemTm(
-                        set.getString(1),
-                        set.getString(2),
-                        set.getDouble(3),
-                        set.getInt(4),
+                        item.getCode(),
+                        item.getDescription(),
+                        item.getUnitPrice(),
+                        item.getQtyOnHand(),
                         button);
                 tmList.add(itemTm);
 
@@ -156,8 +154,6 @@ public class ItemManagementFormController {
                     }
                 });
             }
-
-
         }catch (ClassNotFoundException | SQLException e){
             e.printStackTrace();
         }

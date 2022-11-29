@@ -93,4 +93,25 @@ public class DatabaseAccessCode {
         statement1.setString(1,code);
         return statement1.executeUpdate() > 0;
     }
+
+    //search item
+    public  ArrayList<Item> searchItem(String searchText) throws SQLException, ClassNotFoundException {
+        String sql = "SELECT * FROM Item WHERE description LIKE ?";
+        PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
+        statement.setString(1,searchText);
+        ResultSet set = statement.executeQuery();
+
+        ArrayList<Item> itemArrayList = new ArrayList<>();
+        while (set.next()){
+            Item item = new Item(
+                    set.getString(1),
+                    set.getString(2),
+                    set.getDouble(3),
+                    set.getInt(4)
+            );
+            itemArrayList.add(item);
+        }
+        return itemArrayList;
+
+    }
 }
