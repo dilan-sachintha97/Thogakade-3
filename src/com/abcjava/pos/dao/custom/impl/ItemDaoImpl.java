@@ -5,7 +5,9 @@ import com.abcjava.pos.db.DBConnection;
 import com.abcjava.pos.entity.Item;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ItemDaoImpl implements ItemDao {
     @Override
@@ -36,5 +38,25 @@ public class ItemDaoImpl implements ItemDao {
         PreparedStatement statement1 = DBConnection.getInstance().getConnection().prepareStatement(sql1);
         statement1.setString(1,code);
         return statement1.executeUpdate() > 0;
+    }
+
+    @Override
+    public ArrayList<Item> searchItem(String searchText) throws SQLException, ClassNotFoundException {
+        String sql = "SELECT * FROM Item WHERE description LIKE ?";
+        PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
+        statement.setString(1,searchText);
+        ResultSet set = statement.executeQuery();
+
+        ArrayList<Item> itemArrayList = new ArrayList<>();
+        while (set.next()){
+            Item item = new Item(
+                    set.getString(1),
+                    set.getString(2),
+                    set.getDouble(3),
+                    set.getInt(4)
+            );
+            itemArrayList.add(item);
+        }
+        return itemArrayList;
     }
 }

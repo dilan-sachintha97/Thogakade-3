@@ -1,8 +1,5 @@
 package com.abcjava.pos.controller;
 
-import com.abcjava.pos.dao.DatabaseAccessCode;
-import com.abcjava.pos.db.DBConnection;
-import com.abcjava.pos.db.Database;
 import com.abcjava.pos.entity.Item;
 import com.abcjava.pos.view.tm.ItemTm;
 import com.jfoenix.controls.JFXButton;

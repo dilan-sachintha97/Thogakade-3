@@ -1,12 +1,8 @@
 package com.abcjava.pos.controller;
 
-import com.abcjava.pos.dao.DatabaseAccessCode;
-import com.abcjava.pos.db.DBConnection;
-import com.abcjava.pos.db.Database;
 import com.abcjava.pos.entity.Customer;
 import com.abcjava.pos.view.tm.CustomerTm;
 import com.jfoenix.controls.JFXButton;
-import com.mysql.cj.jdbc.Driver;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
