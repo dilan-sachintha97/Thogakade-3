@@ -1,5 +1,6 @@
 package com.abcjava.pos.controller;
 
+import com.abcjava.pos.dao.DatabaseAccessCode;
 import com.abcjava.pos.db.DBConnection;
 import com.abcjava.pos.db.Database;
 import com.abcjava.pos.modal.Item;
@@ -176,24 +177,21 @@ public class ItemManagementFormController {
 
 
     private void setDataToDatabase() {
-        Item item = new Item(txtCode.getText(), txtDescription.getText(), Double.parseDouble(txtUnitPrice.getText()), Integer.parseInt(txtQtyOnHand.getText()));
         try {
-            String sql = "INSERT INTO Item VALUES (?,?,?,?)";
-            PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
-            statement.setString(1, item.getCode());
-            statement.setString(2, item.getDescription());
-            statement.setDouble(3, item.getUnitPrice());
-            statement.setInt(4, item.getQtyOnHand());
-            int isSaved = statement.executeUpdate();
-
-            if (isSaved > 0) {
+            boolean isSavedItem = new DatabaseAccessCode().saveItem(
+                    new com.abcjava.pos.entity.Item(
+                            txtCode.getText(),
+                            txtDescription.getText(),
+                            Double.parseDouble(txtUnitPrice.getText()),
+                            Integer.parseInt(txtQtyOnHand.getText())
+                    )
+            );
+            if (isSavedItem) {
                 clearField();
                 new Alert(Alert.AlertType.INFORMATION, "Item Saved").show();
             } else {
                 new Alert(Alert.AlertType.WARNING, "Something Wrong!").show();
             }
-
-
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }

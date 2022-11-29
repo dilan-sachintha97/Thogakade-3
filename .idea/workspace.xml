@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="250f04df-20ff-418f-842d-e907ae63962e" name="Changes" comment="done delete customer">
+    <list default="true" id="250f04df-20ff-418f-842d-e907ae63962e" name="Changes" comment="done search customer">
+      <change afterPath="$PROJECT_DIR$/src/com/abcjava/pos/entity/Item.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thogakade/com/abcjava/pos/controller/CustomerManagementFormController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Thogakade/com/abcjava/pos/controller/CustomerManagementFormController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/abcjava/pos/controller/CustomerManagementFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/abcjava/pos/controller/CustomerManagementFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/abcjava/pos/controller/ItemManagementFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/abcjava/pos/controller/ItemManagementFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/abcjava/pos/dao/DatabaseAccessCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/abcjava/pos/dao/DatabaseAccessCode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -162,14 +162,8 @@
       <workItem from="1669633107400" duration="3603000" />
       <workItem from="1669637687458" duration="5336000" />
       <workItem from="1669648439580" duration="68000" />
-      <workItem from="1669648709474" duration="4507000" />
-    </task>
-    <task id="LOCAL-00018" summary="init Oder Place Form">
-      <created>1668051114777</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1668051114777</updated>
+      <workItem from="1669648709474" duration="5169000" />
+      <workItem from="1669690741962" duration="575000" />
     </task>
     <task id="LOCAL-00019" summary="add order date">
       <created>1668053325565</created>
@@ -507,7 +501,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669651744866</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="done search customer">
+      <created>1669653395021</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1669653395021</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -525,7 +526,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="4" />
     <MESSAGE value="created oder details form" />
     <MESSAGE value="completed project" />
     <MESSAGE value="mysql connector added" />
@@ -550,6 +550,7 @@
     <MESSAGE value="done save customer" />
     <MESSAGE value="done update customer" />
     <MESSAGE value="done delete customer" />
-    <option name="LAST_COMMIT_MESSAGE" value="done delete customer" />
+    <MESSAGE value="done search customer" />
+    <option name="LAST_COMMIT_MESSAGE" value="done search customer" />
   </component>
 </project>

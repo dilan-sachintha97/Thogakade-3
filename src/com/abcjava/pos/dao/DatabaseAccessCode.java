@@ -2,6 +2,7 @@ package com.abcjava.pos.dao;
 
 import com.abcjava.pos.db.DBConnection;
 import com.abcjava.pos.entity.Customer;
+import com.abcjava.pos.entity.Item;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -61,5 +62,16 @@ public class DatabaseAccessCode {
             customerList.add(customer);
         }
         return customerList;
+    }
+
+    //save item
+    public boolean saveItem(Item item) throws SQLException, ClassNotFoundException {
+        String sql = "INSERT INTO Item VALUES (?,?,?,?)";
+        PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement(sql);
+        statement.setString(1, item.getCode());
+        statement.setString(2, item.getDescription());
+        statement.setDouble(3, item.getUnitPrice());
+        statement.setInt(4, item.getQtyOnHand());
+        return statement.executeUpdate() > 0;
     }
 }
