@@ -2,15 +2,13 @@ package com.abcjava.pos.dao.custom.impl;
 
 import com.abcjava.pos.dao.CrudUtil;
 import com.abcjava.pos.dao.custom.CustomerDao;
-import com.abcjava.pos.db.DBConnection;
 import com.abcjava.pos.entity.Customer;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class CustomerDaoImpl implements CustomerDao {
+public class CustomerDaoIMPL implements CustomerDao {
     @Override
     public boolean save(Customer customer) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO Customer VALUES (?,?,?,?)";

@@ -1,7 +1,8 @@
 package com.abcjava.pos.dao;
 
-import com.abcjava.pos.dao.custom.impl.CustomerDaoImpl;
-import com.abcjava.pos.dao.custom.impl.ItemDaoImpl;
+
+import com.abcjava.pos.dao.custom.impl.CustomerDaoIMPL;
+import com.abcjava.pos.dao.custom.impl.ItemDaoIMPL;
 
 public class DaoFactory {
     // Applied Factory Method Design pattens
@@ -21,9 +22,9 @@ public class DaoFactory {
 
         switch (type){
             case CUSTOMER:
-                return (T) new CustomerDaoImpl();
+                return (T) new CustomerDaoIMPL();
             case ITEMS:
-                return (T) new ItemDaoImpl();
+                return (T) new ItemDaoIMPL();
             default:
                 return null;
         }

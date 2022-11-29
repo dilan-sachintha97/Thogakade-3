@@ -2,15 +2,13 @@ package com.abcjava.pos.dao.custom.impl;
 
 import com.abcjava.pos.dao.CrudUtil;
 import com.abcjava.pos.dao.custom.ItemDao;
-import com.abcjava.pos.db.DBConnection;
 import com.abcjava.pos.entity.Item;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ItemDaoImpl implements ItemDao {
+public class ItemDaoIMPL implements ItemDao {
     @Override
     public boolean save(Item item) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO Item VALUES (?,?,?,?)";

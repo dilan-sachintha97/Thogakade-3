@@ -1,10 +1,9 @@
 package com.abcjava.pos.controller;
 
-import com.abcjava.pos.dao.DaoFactory;
-import com.abcjava.pos.dao.DaoTypes;
-import com.abcjava.pos.dao.custom.ItemDao;
-import com.abcjava.pos.dao.custom.impl.ItemDaoImpl;
-import com.abcjava.pos.entity.Item;
+import com.abcjava.pos.bo.BoFactory;
+import com.abcjava.pos.bo.BoTypes;
+import com.abcjava.pos.bo.custom.ItemBo;
+import com.abcjava.pos.dto.ItemDTO;
 import com.abcjava.pos.view.tm.ItemTm;
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
@@ -38,7 +37,7 @@ public class ItemManagementFormController {
     public TableColumn<ItemTm,Integer>  colQtyOnHand;
     private String text = "";
 
-    private ItemDao itemDao = DaoFactory.getInstance().getDao(DaoTypes.ITEMS);
+    private ItemBo itemBo = BoFactory.getInstance().getBo(BoTypes.ITEMS);
 
     public void initialize(){
         colCode.setCellValueFactory(new PropertyValueFactory<>("code"));
@@ -91,8 +90,8 @@ public class ItemManagementFormController {
             clearField();
         }else{
             try {
-               boolean isUpdatedItem = itemDao.update(
-                       new Item( txtCode.getText(),
+               boolean isUpdatedItem = itemBo.updateItem(
+                       new ItemDTO( txtCode.getText(),
                                txtDescription.getText(),
                                Double.parseDouble(txtUnitPrice.getText()),
                                Integer.parseInt(txtQtyOnHand.getText()))
@@ -125,9 +124,9 @@ public class ItemManagementFormController {
         //search
         String searchText = "%"+text+"%";
         try{
-            ArrayList<Item> itemArrayList = itemDao.searchItem(searchText);
+            ArrayList<ItemDTO> itemArrayList = itemBo.searchItems(searchText);
 
-           for(Item item : itemArrayList){
+           for(ItemDTO item : itemArrayList){
                 Button button = new Button("Delete");
                 ItemTm itemTm = new ItemTm(
                         item.getCode(),
@@ -144,7 +143,7 @@ public class ItemManagementFormController {
                     Optional<ButtonType> buttonType = alert.showAndWait();
                     if (buttonType.get() == ButtonType.YES) {
                         try{
-                            boolean isDeletedItem = itemDao.delete(itemTm.getCode());
+                            boolean isDeletedItem = itemBo.deleteItem(itemTm.getCode());
                             if(isDeletedItem ){
                                  setDataToTable(text);
                                 new Alert(Alert.AlertType.INFORMATION, "Item Deleted").show();
@@ -167,8 +166,8 @@ public class ItemManagementFormController {
 
     private void setDataToDatabase() {
         try {
-            boolean isSavedItem = itemDao.save(
-                    new com.abcjava.pos.entity.Item(
+            boolean isSavedItem = itemBo.saveItem(
+                    new ItemDTO(
                             txtCode.getText(),
                             txtDescription.getText(),
                             Double.parseDouble(txtUnitPrice.getText()),

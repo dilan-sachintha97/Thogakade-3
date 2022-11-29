@@ -1,9 +1,9 @@
 package com.abcjava.pos.controller;
 
-import com.abcjava.pos.dao.DaoFactory;
-import com.abcjava.pos.dao.DaoTypes;
-import com.abcjava.pos.dao.custom.CustomerDao;
-import com.abcjava.pos.entity.Customer;
+import com.abcjava.pos.bo.BoFactory;
+import com.abcjava.pos.bo.BoTypes;
+import com.abcjava.pos.bo.custom.CustomerBo;
+import com.abcjava.pos.dto.CustomerDTO;
 import com.abcjava.pos.view.tm.CustomerTm;
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
@@ -38,7 +38,7 @@ public class CustomerManagementFormController {
 
     private String searchText="";
 
-    private CustomerDao customerDao = DaoFactory.getInstance().getDao(DaoTypes.CUSTOMER);
+    private CustomerBo customerBo = BoFactory.getInstance().getBo(BoTypes.CUSTOMER);
 
     public void initialize() {
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -77,8 +77,8 @@ public class CustomerManagementFormController {
         // set value to table
         ObservableList<CustomerTm> tmList = FXCollections.observableArrayList();
         try {
-            ArrayList<Customer> list = customerDao.searchCustomer(searchText);
-            for (Customer c : list){
+            ArrayList<CustomerDTO> list = customerBo.searchCustomers(searchText);
+            for (CustomerDTO c : list){
                 Button button = new Button("Delete");
                 CustomerTm customerTm = new CustomerTm(
                         c.getId(),
@@ -96,7 +96,7 @@ public class CustomerManagementFormController {
                     if (buttonType.get() == ButtonType.YES) {
 
                         try{
-                            boolean isDeleteCustomer = customerDao.delete(customerTm.getId());
+                            boolean isDeleteCustomer = customerBo.deleteCustomer(customerTm.getId());
                             if(isDeleteCustomer){
                                 searchCustomers(searchText);
                                 new Alert(Alert.AlertType.INFORMATION, "Customer Deleted").show();
@@ -128,7 +128,7 @@ public class CustomerManagementFormController {
             //Save customer in database - mySQl
 
             try {
-                boolean isSavedCustomer = customerDao.save(new com.abcjava.pos.entity.Customer(
+                boolean isSavedCustomer = customerBo.saveCustomer(new CustomerDTO(
                         txtId.getText(),
                         txtName.getText(),
                         txtAddress.getText(),
@@ -152,7 +152,7 @@ public class CustomerManagementFormController {
         } else {
             //update customer
             try{
-                boolean isUpdatedCustomer = customerDao.update(new com.abcjava.pos.entity.Customer(
+                boolean isUpdatedCustomer = customerBo.updateCustomer(new CustomerDTO(
                         txtId.getText(),
                         txtName.getText(),
                         txtAddress.getText(),

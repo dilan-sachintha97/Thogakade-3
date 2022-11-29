@@ -4,12 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="250f04df-20ff-418f-842d-e907ae63962e" name="Changes" comment="2">
-      <change afterPath="$PROJECT_DIR$/src/com/abcjava/pos/bo/custom/impl/CustomerBoIMPL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/abcjava/pos/bo/custom/impl/ItemBoIMPL.java" afterDir="false" />
+    <list default="true" id="250f04df-20ff-418f-842d-e907ae63962e" name="Changes" comment="done bo layer">
+      <change afterPath="$PROJECT_DIR$/src/com/abcjava/pos/bo/BoFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/abcjava/pos/bo/BoTypes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/abcjava/pos/bo/custom/CustomerBo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/abcjava/pos/bo/custom/CustomerBo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/abcjava/pos/bo/custom/ItemBo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/abcjava/pos/bo/custom/ItemBo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Thogakade/com/abcjava/pos/controller/CustomerManagementFormController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Thogakade/com/abcjava/pos/controller/CustomerManagementFormController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Thogakade/com/abcjava/pos/controller/ItemManagementFormController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Thogakade/com/abcjava/pos/controller/ItemManagementFormController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/abcjava/pos/controller/CustomerManagementFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/abcjava/pos/controller/CustomerManagementFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/abcjava/pos/controller/ItemManagementFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/abcjava/pos/controller/ItemManagementFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/abcjava/pos/dao/DaoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/abcjava/pos/dao/DaoFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/abcjava/pos/dao/custom/impl/CustomerDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/abcjava/pos/dao/custom/impl/CustomerDaoIMPL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/abcjava/pos/dao/custom/impl/ItemDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/abcjava/pos/dao/custom/impl/ItemDaoIMPL.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +76,9 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\course\FullStack\Code\JavaFX\App_Project2 - thogakade-with-mysql\src\com\abcjava\pos\db" />
       <recent name="E:\course\java\Code\JavaFX\App_project\src\com\abcjava\pos\view" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.abcjava.pos.bo" />
     </key>
   </component>
   <component name="RunManager">
@@ -175,14 +183,7 @@
       <workItem from="1669714254234" duration="2700000" />
       <workItem from="1669720532395" duration="1320000" />
       <workItem from="1669723130331" duration="14000" />
-      <workItem from="1669728068990" duration="4214000" />
-    </task>
-    <task id="LOCAL-00032" summary="check stock before add to cart">
-      <created>1668408861745</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1668408861745</updated>
+      <workItem from="1669728068990" duration="8034000" />
     </task>
     <task id="LOCAL-00033" summary="1">
       <created>1668413459882</created>
@@ -520,7 +521,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669730330586</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="done bo layer">
+      <created>1669732689044</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1669732689044</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -538,7 +546,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="done item update" />
     <MESSAGE value="done item search" />
     <MESSAGE value="done item delete" />
     <MESSAGE value="set id, code to comboBox" />
@@ -563,6 +570,7 @@
     <MESSAGE value="applied factory design patterns" />
     <MESSAGE value="1" />
     <MESSAGE value="2" />
-    <option name="LAST_COMMIT_MESSAGE" value="2" />
+    <MESSAGE value="done bo layer" />
+    <option name="LAST_COMMIT_MESSAGE" value="done bo layer" />
   </component>
 </project>
