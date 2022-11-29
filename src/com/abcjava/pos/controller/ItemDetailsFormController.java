@@ -1,9 +1,6 @@
 package com.abcjava.pos.controller;
 
 import com.abcjava.pos.db.DBConnection;
-import com.abcjava.pos.db.Database;
-import com.abcjava.pos.modal.ItemDetails;
-import com.abcjava.pos.modal.Order;
 import com.abcjava.pos.view.tm.ItemDetailsTm;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

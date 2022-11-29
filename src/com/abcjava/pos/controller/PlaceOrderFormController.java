@@ -1,7 +1,6 @@
 package com.abcjava.pos.controller;
 
 import com.abcjava.pos.db.DBConnection;
-import com.abcjava.pos.db.Database;
 import com.abcjava.pos.modal.Customer;
 import com.abcjava.pos.modal.Item;
 import com.abcjava.pos.modal.ItemDetails;
@@ -24,7 +23,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Optional;
 
-import static com.abcjava.pos.db.Database.ordersList;
 
 public class PlaceOrderFormController {
     public TextField txtOrderId;
