@@ -1,8 +1,6 @@
 package com.abcjava.pos.controller;
 
 import com.abcjava.pos.db.DBConnection;
-import com.abcjava.pos.modal.Customer;
-import com.abcjava.pos.modal.Item;
 import com.abcjava.pos.modal.ItemDetails;
 import com.abcjava.pos.modal.Order;
 import com.abcjava.pos.view.tm.CartTm;
